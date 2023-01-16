@@ -1,0 +1,30 @@
+.backgroundImage
+{
+    width: fit-content;
+    height: 900px;
+}
+.ModelImage
+{
+    width: 300px;
+    height: 300px;
+    
+}
+.Heading
+{
+    position:absolute; 
+    left:500px;
+     top:20px;
+     
+}
+.display1
+{
+    position:absolute; 
+    left:180px;
+     top:200px;  
+}
+.display2
+{
+    position:absolute; 
+    left:1030px;
+     top:200px;  
+}
