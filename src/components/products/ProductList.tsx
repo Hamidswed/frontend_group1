@@ -13,11 +13,13 @@ const ProductList = () => {
   useEffect(() => {
     dispatch(fetchProductData());
   }, [dispatch]);
-console.log(productState);
+
   return (
-    productState.map((item)=>{
-      return <ProductItem key={item.id} product={item}/>
-    })
+    <div className="product-list">
+      {productState.map((item) => {
+        return <ProductItem key={item.id} product={item} />;
+      })}
+    </div>
   );
 };
 export default ProductList;
