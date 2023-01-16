@@ -14,7 +14,6 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-
 import { ProductType } from "../../type/ProductType";
 
 type PropType = {
