@@ -1,7 +1,7 @@
 .backgroundImage
 {
-    width: max-content;
-    height: 800px;
+    width: fit-content;
+    height: 900px;
 }
 .ModelImage
 {
@@ -19,12 +19,12 @@
 .display1
 {
     position:absolute; 
-    left:150px;
+    left:180px;
      top:200px;  
 }
 .display2
 {
     position:absolute; 
-    left:1090px;
+    left:1030px;
      top:200px;  
 }
