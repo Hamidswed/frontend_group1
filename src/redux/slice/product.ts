@@ -42,6 +42,12 @@ const productSlice = createSlice({
         state.carts[index].qty--;
       }
     },
+    removeAll: (state, action) => {
+      const index = state.carts.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      index >= 0 && state.carts.splice(index, 1);
+    },
   },
 });
 export const actions = productSlice.actions;

@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actions } from "./../../redux/slice/product";
 import { RootState } from "../../redux/store";
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Rating } from "@mui/material";
 
 type PropType = {
   product: ProductType;
@@ -40,9 +40,9 @@ const ProductItem = ({ product }: PropType) => {
   const addToCartHandler = () => {
     dispatch(actions.addToCart(product));
   };
-  const removeFromCartHandler=()=>{
-    dispatch(actions.removeFromCart(product))
-  }
+  const removeFromCartHandler = () => {
+    dispatch(actions.removeFromCart(product));
+  };
   return (
     <Card sx={{ width: 300 }}>
       <CardHeader
@@ -71,6 +71,12 @@ const ProductItem = ({ product }: PropType) => {
         >
           ${product.price}
         </Typography>
+        <Rating
+          name="read-only"
+          value={product.rating.rate}
+          readOnly
+          sx={{ marginTop: "10px" }}
+        />
       </CardContent>
       <CardActions
         disableSpacing
@@ -85,14 +91,15 @@ const ProductItem = ({ product }: PropType) => {
           </IconButton>
         ) : (
           <div>
-            <Button variant="outlined" onClick={removeFromCartHandler}>-</Button>
+            <Button variant="outlined" onClick={removeFromCartHandler}>
+              -
+            </Button>
             <span>{storeCount}</span>
             <Button variant="outlined" onClick={addToCartHandler}>
               +
             </Button>
           </div>
         )}
-
         <IconButton>
           <MoreHorizIcon />
         </IconButton>
