@@ -40,7 +40,9 @@ const ProductItem = ({ product }: PropType) => {
   const addToCartHandler = () => {
     dispatch(actions.addToCart(product));
   };
-  
+  const removeFromCartHandler=()=>{
+    dispatch(actions.removeFromCart(product))
+  }
   return (
     <Card sx={{ width: 300 }}>
       <CardHeader
@@ -83,7 +85,7 @@ const ProductItem = ({ product }: PropType) => {
           </IconButton>
         ) : (
           <div>
-            <Button variant="outlined">-</Button>
+            <Button variant="outlined" onClick={removeFromCartHandler}>-</Button>
             <span>{storeCount}</span>
             <Button variant="outlined" onClick={addToCartHandler}>
               +
