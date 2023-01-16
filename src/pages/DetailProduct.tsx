@@ -1,13 +1,6 @@
-import React from "react";
+import ProductDetail from "../components/products/ProductDetail"
 
-
-
-export default function DetailProduct()
-{
-    return <div>
-
-    </div>;
-    
+const DetailProduct=()=>{
+  return <ProductDetail/>
 }
-
-
+export default DetailProduct

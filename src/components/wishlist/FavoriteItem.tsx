@@ -1,13 +1,4 @@
-import React from "react";
-
-
-
-export default function FavoriteItem()
-{
-    return <div>
-
-    </div>;
-    
+const FavoriteItem=()=>{
+  return <div>favorite ProductItem</div>
 }
-
-
+export default FavoriteItem

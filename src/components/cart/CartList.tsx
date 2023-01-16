@@ -1,13 +1,4 @@
-import React from "react";
-
-
-
-export default function CartList()
-{
-    return <div>
-
-    </div>;
-    
-}
-
-
+const CartList = () => {
+  return <div>Cart list</div>;
+};
+export default CartList;

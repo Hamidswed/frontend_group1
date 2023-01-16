@@ -1,13 +1,4 @@
-import React from "react";
-
-
-
-export default function ProductList()
-{
-    return <div>
-
-    </div>;
-    
+const ProductDetail=()=>{
+  return <div>product detail</div>
 }
-
-
+export default ProductDetail

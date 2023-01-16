@@ -1,13 +1,5 @@
-import React from "react";
-import Hero from  "../../src/components/home/Hero";
-
-
-export default function Home()
-{
-    return <div>
-<Hero></Hero>
-    </div>;
-    
-}
-
-
+import Hero from "./../components/home/Hero";
+const Home = () => {
+  return <Hero />;
+};
+export default Home;
