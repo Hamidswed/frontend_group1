@@ -1,0 +1,30 @@
+.backgroundImage
+{
+    width: max-content;
+    height: 800px;
+}
+.ModelImage
+{
+    width: 300px;
+    height: 300px;
+    
+}
+.Heading
+{
+    position:absolute; 
+    left:500px;
+     top:20px;
+     
+}
+.display1
+{
+    position:absolute; 
+    left:150px;
+     top:200px;  
+}
+.display2
+{
+    position:absolute; 
+    left:1090px;
+     top:200px;  
+}
