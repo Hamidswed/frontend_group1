@@ -4,7 +4,6 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -45,7 +44,12 @@ const ProductItem = ({ product }: PropType) => {
         image={product.image}
         alt={product.title}
       />
-      <CardActions disableSpacing>
+      <CardContent>
+        <Typography sx={{fontWeight:"bold",color:"#F44336",fontSize:"20px"}}>
+          ${product.price}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
