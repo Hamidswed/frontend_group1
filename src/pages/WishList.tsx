@@ -1,13 +1,6 @@
-import React from "react";
+import FavoriteList from "../components/wishlist/FavoriteList";
 
-
-
-export default function WishList()
-{
-    return <div>
-
-    </div>;
-    
-}
-
-
+const WishList = () => {
+  return <FavoriteList />;
+};
+export default WishList;
