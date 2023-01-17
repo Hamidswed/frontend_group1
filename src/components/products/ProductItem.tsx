@@ -1,3 +1,9 @@
+
+import { AppDispatch,RootState } from "../../redux/store";
+import { useSelector,useDispatch } from "react-redux";
+
+//mui
+import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,6 +16,14 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Snackbar } from "@mui/material";
+import Alert from "@mui/material/Alert";
+//import Rating from '@mui/material/Rating';
+
+import { ProductType } from "../../type/ProductType";
+import { actions } from "../../redux/slice/product";
+import { useState } from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { ProductType } from "../../type/ProductType";
@@ -19,11 +33,35 @@ import { RootState } from "../../redux/store";
 import { useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
 
+
 type PropType = {
   product: ProductType;
 };
 
 const ProductItem = ({ product }: PropType) => {
+  // favorite Item Logic
+  const dispatch=useDispatch<AppDispatch>();
+  const favaoriteList=useSelector((state:RootState)=>state.product.favorites);
+  const isExist=favaoriteList.some((favoriteItem:any)=>favoriteItem.id==product.id)
+  
+  function addToFavorite()
+  {
+
+    dispatch(actions.getFavoriteData(product));
+    isExist?setOpen(true) :setOpenFail(true)
+    isExist ?  setAlert(false) :  setAlert(true)
+  }
+  //snackbar Logic
+  const [open ,setOpen]=useState<boolean>(false);
+  const [openFail ,setOpenFail]=useState<boolean>(false);
+  const [alert ,setAlert]=useState<boolean>(false);
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  setOpenFail(false);
+      setOpen(false);
+    }; 
   const [storeIndex, setStoreIndex] = useState(-1);
   const [storeCount, setStoreCount] = useState(0);
   const cartState = useSelector((state: RootState) => state.product.carts);
@@ -43,7 +81,9 @@ const ProductItem = ({ product }: PropType) => {
   const removeFromCartHandler = () => {
     dispatch(actions.removeFromCart(product));
   };
+
   return (
+   
     <Card sx={{ width: 300 }}>
       <CardHeader
         avatar={
@@ -79,6 +119,25 @@ const ProductItem = ({ product }: PropType) => {
           sx={{ marginTop: "10px" }}
         />
       </CardContent>
+
+      <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}>
+        <IconButton aria-label="add to favorites" onClick={addToFavorite}>
+          <FavoriteIcon sx={{color:isExist? "red":"green"}} />
+        </IconButton>
+        {
+          !alert ? 
+        (    
+        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
+        <Alert severity="warning">The {product.title} exist already</Alert>
+        </Snackbar>
+      
+        ):
+      
+        <Snackbar  open={openFail} autoHideDuration={1000} onClose={handleClose}>
+        <Alert severity="success">The  {product.title} added Succesfully</Alert>
+        </Snackbar>
+    
+      }
       <CardActions
         disableSpacing
         sx={{ display: "flex", justifyContent: "space-between" }}
@@ -101,6 +160,7 @@ const ProductItem = ({ product }: PropType) => {
             </Button>
           </div>
         )}
+
         <IconButton>
           <MoreHorizIcon />
         </IconButton>
