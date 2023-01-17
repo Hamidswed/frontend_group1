@@ -14,6 +14,7 @@ import { RootState } from "../../redux/store";
 import { ProductType } from "../../type/ProductType";
 import CartItem from "./CartItem";
 import { actions } from "./../../redux/slice/product";
+import { useEffect } from "react";
 
 function createData(
   id: number,
@@ -45,7 +46,9 @@ const CartList = () => {
     (state: RootState) => state.product.totalPrice
   );
   const dispatch = useDispatch();
-  dispatch(actions.totalPrice());
+  useEffect(() => {
+    dispatch(actions.totalPrice());
+  });
 
   const cartRows = cartState.map((cart) => {
     return createData(
@@ -88,6 +91,10 @@ const CartList = () => {
           {cartRows.map((cart) => {
             return <CartItem key={cart.id} cart={cart} />;
           })}
+          <TableRow>
+              <TableCell colSpan={2}>Subtotal</TableCell>
+              <TableCell align="right">{totalPrice.toFixed(2)}</TableCell>
+            </TableRow>
         </Table>
       </TableContainer>
       <div>Total:{totalPrice.toFixed(2)}</div>
