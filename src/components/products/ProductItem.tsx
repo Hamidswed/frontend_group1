@@ -1,3 +1,4 @@
+
 import { AppDispatch,RootState } from "../../redux/store";
 import { useSelector,useDispatch } from "react-redux";
 
@@ -13,7 +14,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -24,6 +24,15 @@ import Alert from "@mui/material/Alert";
 import { ProductType } from "../../type/ProductType";
 import { actions } from "../../redux/slice/product";
 import { useState } from "react";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
+import { ProductType } from "../../type/ProductType";
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "./../../redux/slice/product";
+import { RootState } from "../../redux/store";
+import { useEffect, useState } from "react";
+import { Button, Rating } from "@mui/material";
+
 
 type PropType = {
   product: ProductType;
@@ -53,6 +62,25 @@ const ProductItem = ({ product }: PropType) => {
   setOpenFail(false);
       setOpen(false);
     }; 
+  const [storeIndex, setStoreIndex] = useState(-1);
+  const [storeCount, setStoreCount] = useState(0);
+  const cartState = useSelector((state: RootState) => state.product.carts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const index = cartState.findIndex((item) => item.id === product.id);
+    setStoreIndex(index);
+    if (index >= 0) {
+      setStoreCount(cartState[index].qty);
+    }
+  }, [cartState, product.id]);
+
+  const addToCartHandler = () => {
+    dispatch(actions.addToCart(product));
+  };
+  const removeFromCartHandler = () => {
+    dispatch(actions.removeFromCart(product));
+  };
 
   return (
    
@@ -78,10 +106,19 @@ const ProductItem = ({ product }: PropType) => {
         alt={product.title}
       />
       <CardContent>
-        <Typography sx={{fontWeight:"bold",color:"#F44336",fontSize:"20px"}}>
+        <Typography
+          sx={{ fontWeight: "bold", color: "#F44336", fontSize: "20px" }}
+        >
           ${product.price}
         </Typography>
+        <Rating
+          name="read-only"
+          value={product.rating.rate}
+          readOnly
+          sx={{ marginTop: "10px" }}
+        />
       </CardContent>
+
       <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}>
         <IconButton aria-label="add to favorites" onClick={addToFavorite}>
           <FavoriteIcon sx={{color:isExist? "red":"green"}} />
@@ -100,10 +137,30 @@ const ProductItem = ({ product }: PropType) => {
         </Snackbar>
     
       }
-        <IconButton>
-          <AddShoppingCartIcon />
+      <CardActions
+        disableSpacing
+        sx={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
         </IconButton>
-        <IconButton >
+        {storeIndex < 0 ? (
+          <IconButton onClick={addToCartHandler}>
+            <AddShoppingCartIcon />
+          </IconButton>
+        ) : (
+          <div>
+            <Button variant="outlined" onClick={removeFromCartHandler}>
+              -
+            </Button>
+            <span>{storeCount}</span>
+            <Button variant="outlined" onClick={addToCartHandler}>
+              +
+            </Button>
+          </div>
+        )}
+
+        <IconButton>
           <MoreHorizIcon />
         </IconButton>
       </CardActions>
