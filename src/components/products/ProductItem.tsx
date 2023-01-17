@@ -61,9 +61,10 @@ const ProductItem = ({ product }: PropType) => {
       />
       <CardMedia
         component="img"
-        height="250"
+        height="180"
         image={product.image}
         alt={product.title}
+        sx={{maxWidth:"fit-content",margin:"10px auto"}}
       />
       <CardContent>
         <Typography
@@ -90,12 +91,12 @@ const ProductItem = ({ product }: PropType) => {
             <AddShoppingCartIcon />
           </IconButton>
         ) : (
-          <div>
-            <Button variant="outlined" onClick={removeFromCartHandler}>
+          <div className="product-item-btn">
+            <Button variant="outlined" onClick={removeFromCartHandler} size="small">
               -
             </Button>
             <span>{storeCount}</span>
-            <Button variant="outlined" onClick={addToCartHandler}>
+            <Button variant="outlined" onClick={addToCartHandler} size="small">
               +
             </Button>
           </div>

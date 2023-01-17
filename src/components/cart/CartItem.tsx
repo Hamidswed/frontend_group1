@@ -31,27 +31,31 @@ const CartItem = ({ cart }: PropType) => {
           <img src={cart.image} alt={cart.title} />
         </TableCell>
         <TableCell align="center">{cart.title.slice(0, 20)}</TableCell>
-        <TableCell align="center">${cart.price*cart.qty}</TableCell>
+        <TableCell align="center">${cart.price * cart.qty}</TableCell>
         <TableCell align="center">{cart.rating.rate}</TableCell>
         <TableCell align="center">
           <Button
             variant="outlined"
             onClick={() => dispatch(actions.removeFromCart(cart))}
+            size="small"
           >
             -
           </Button>
-          {cart.qty}
+          <span style={{marginInline:"10px"}}>{cart.qty}</span>
           <Button
             variant="outlined"
             onClick={() => dispatch(actions.addToCart(cart))}
+            size="small"
           >
             +
           </Button>
         </TableCell>
         <TableCell align="center">
-          <IconButton onClick={()=>dispatch(actions.removeAll(cart))}>
-            <HighlightOffIcon />
-          </IconButton>
+          <Tooltip title="Remove from cart">
+            <IconButton onClick={() => dispatch(actions.removeAll(cart))}>
+              <HighlightOffIcon />
+            </IconButton>
+          </Tooltip>
         </TableCell>
       </TableRow>
     </TableBody>
