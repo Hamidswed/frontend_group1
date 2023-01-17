@@ -1,4 +1,3 @@
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,18 +8,41 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { ProductType } from "../../type/ProductType";
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "./../../redux/slice/product";
+import { RootState } from "../../redux/store";
+import { useEffect, useState } from "react";
+import { Button, Rating } from "@mui/material";
 
 type PropType = {
   product: ProductType;
 };
 
 const ProductItem = ({ product }: PropType) => {
+  const [storeIndex, setStoreIndex] = useState(-1);
+  const [storeCount, setStoreCount] = useState(0);
+  const cartState = useSelector((state: RootState) => state.product.carts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const index = cartState.findIndex((item) => item.id === product.id);
+    setStoreIndex(index);
+    if (index >= 0) {
+      setStoreCount(cartState[index].qty);
+    }
+  }, [cartState, product.id]);
+
+  const addToCartHandler = () => {
+    dispatch(actions.addToCart(product));
+  };
+  const removeFromCartHandler = () => {
+    dispatch(actions.removeFromCart(product));
+  };
   return (
     <Card sx={{ width: 300 }}>
       <CardHeader
@@ -44,18 +66,41 @@ const ProductItem = ({ product }: PropType) => {
         alt={product.title}
       />
       <CardContent>
-        <Typography sx={{fontWeight:"bold",color:"#F44336",fontSize:"20px"}}>
+        <Typography
+          sx={{ fontWeight: "bold", color: "#F44336", fontSize: "20px" }}
+        >
           ${product.price}
         </Typography>
+        <Rating
+          name="read-only"
+          value={product.rating.rate}
+          readOnly
+          sx={{ marginTop: "10px" }}
+        />
       </CardContent>
-      <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}>
+      <CardActions
+        disableSpacing
+        sx={{ display: "flex", justifyContent: "space-between" }}
+      >
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
+        {storeIndex < 0 ? (
+          <IconButton onClick={addToCartHandler}>
+            <AddShoppingCartIcon />
+          </IconButton>
+        ) : (
+          <div>
+            <Button variant="outlined" onClick={removeFromCartHandler}>
+              -
+            </Button>
+            <span>{storeCount}</span>
+            <Button variant="outlined" onClick={addToCartHandler}>
+              +
+            </Button>
+          </div>
+        )}
         <IconButton>
-          <AddShoppingCartIcon />
-        </IconButton>
-        <IconButton >
           <MoreHorizIcon />
         </IconButton>
       </CardActions>

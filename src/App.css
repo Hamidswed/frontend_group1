@@ -13,3 +13,6 @@
   justify-content: center;
   gap: 30px;
 }
+.cart-item img{
+  width: 80px;
+}
