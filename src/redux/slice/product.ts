@@ -5,12 +5,14 @@ type InitialType = {
   products: ProductType[];
   carts: ProductType[];
   favorites: ProductType[];
+  totalPrice: number;
 };
 
 const initialState: InitialType = {
   products: [],
   carts: [],
   favorites: [],
+  totalPrice: 0,
 };
 
 const productSlice = createSlice({
@@ -47,6 +49,11 @@ const productSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       index >= 0 && state.carts.splice(index, 1);
+    },
+    totalPrice: (state) => {
+      state.totalPrice = state.carts.reduce((acc, curr) => {
+        return acc + curr.qty * curr.price;
+      }, 0);
     },
   },
 });
