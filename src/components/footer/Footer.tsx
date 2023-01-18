@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-const Footer=()=>{
-  return <div>footer</div>
-}
-export default Footer
-=======
+
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -14,7 +9,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Margin } from '@mui/icons-material';
 import { color } from '@mui/system';
 
-export default function LabelBottomNavigation() {
+export default function Footer() {
   const [value, setValue] = React.useState('recents');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -42,4 +37,4 @@ export default function LabelBottomNavigation() {
     </BottomNavigation>
   );
 }
->>>>>>> e3454ed (NavBar and Footer)
+
