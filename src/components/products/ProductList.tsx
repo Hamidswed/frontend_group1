@@ -17,11 +17,13 @@ const ProductList = () => {
   }, [dispatch]);
 
   return (
-    <div className="product-list">
+    <div>
       <Link to="/cart">Cart {cartState.length}</Link>
-      {productState.map((item) => {
-        return <ProductItem key={item.id} product={item} />;
-      })}
+      <div className="product-list">
+        {productState.map((item) => {
+          return <ProductItem key={item.id} product={item} />;
+        })}
+      </div>
     </div>
   );
 };
