@@ -1,5 +1,5 @@
-import { AppDispatch,RootState } from "../../redux/store";
-import { useSelector,useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 //mui
@@ -17,15 +17,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Snackbar } from "@mui/material";
+import { Skeleton, Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 //import Rating from '@mui/material/Rating';
 
 //import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { ProductType } from "../../type/ProductType";
-import { RootState } from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
 import { actions } from "./../../redux/slice/product";
 import { useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
@@ -161,8 +159,9 @@ const ProductItem = ({ product }: PropType) => {
         )}
 
         <IconButton>
-          
-          <Link to = {`/products/${product.id}`}><MoreHorizIcon /></Link>
+          <Link to={`/products/${product.id}`}>
+            <MoreHorizIcon />
+          </Link>
         </IconButton>
       </CardActions>
     </Card>
