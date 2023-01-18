@@ -1,5 +1,4 @@
 
-import Favorite from "@mui/icons-material/Favorite";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../../type/ProductType";
 
