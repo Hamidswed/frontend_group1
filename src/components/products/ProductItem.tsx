@@ -24,8 +24,6 @@ import Alert from "@mui/material/Alert";
 //import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { ProductType } from "../../type/ProductType";
-import { RootState } from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
 import { actions } from "./../../redux/slice/product";
 import { useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
@@ -83,6 +81,7 @@ const ProductItem = ({ product }: PropType) => {
   };
 
   return (
+    
     <Card sx={{ width: 300 }}>
       <CardHeader
         avatar={
