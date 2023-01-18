@@ -1,10 +1,20 @@
 import { ProductType } from "../../type/ProductType";
 
 //mui
-import Box from '@mui/material/Box';
-import { Button } from "@mui/material";
-import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import {
+  Button,
+  IconButton,
+  TableBody,
+  TableCell,
+  TableRow,
+  
+} from "@mui/material";
+import { useDispatch } from "react-redux";
+import { actions } from "../../redux/slice/product";
+import { AppDispatch } from "../../redux/store";
+
+
 
 type FavoriteListType={
   favourite:ProductType;
@@ -13,25 +23,42 @@ type FavoriteListType={
 
 const FavoriteItem=({favourite,quantity}:FavoriteListType)=>
 {
-  
-const name=favourite.title.slice(0,20);
+  const dispatch=useDispatch<AppDispatch>();
 
-      return (
-      
-<Box style={{ display: "flex", alignItems: "flex-end"  , justifyContent:"space-around"}} >
-     <Typography   variant="h5">
-     {quantity + " ."} 
-      
-     </Typography>
-     <Typography  variant="h5" component="div">  {name} </Typography>
-     <Typography  variant="h5"> {favourite.price} </Typography>
-     <Typography  variant="h2"> <FavoriteIcon sx={{ color: "red" }} ></FavoriteIcon> </Typography>
-     <Typography  variant="h2"> <Button> BUY</Button> </Typography>
-     
-     </Box>
-     
+function addToCart()
+{
+dispatch(actions.removeFromFavourite(favourite))
+dispatch(actions.addToCart(favourite))
+}
+
+
+  return (
+    
+    <TableBody className="cart-item">
+      <TableRow
+        key={favourite.id}
+        sx={{
+          "&:last-child td, &:last-child th": {
+            borderBottom: "1px solid lightgrey",
+          },
+          bgColor: "none",
+        }}
+      >
+         <TableCell align="center">{quantity + " ."} </TableCell>
+        <TableCell align="center">{favourite.title.slice(0,20)} </TableCell>
+        <TableCell align="center">{favourite.price}</TableCell>
+        <TableCell align="center">
+        <IconButton onClick={()=>dispatch(actions.removeFromFavourite(favourite))}>
+<FavoriteIcon sx={{ color: "red" }} ></FavoriteIcon>
+</IconButton>
+        </TableCell>
+        <TableCell align="center">
+        <Button onClick={addToCart}> BUY</Button> 
+        </TableCell>
+        
+      </TableRow>
+    </TableBody>
   );
- 
  
 }
 export default FavoriteItem

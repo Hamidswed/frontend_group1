@@ -10,6 +10,7 @@ const ProductList = () => {
     (state: RootState) => state.product.products
   );
   const cartState = useSelector((state: RootState) => state.product.carts);
+  const favState = useSelector((state:RootState)=>state.product.favorites)
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -19,11 +20,10 @@ const ProductList = () => {
   return (
     <div>
       <Link to="/cart">Cart {cartState.length}</Link>
-      <div className="product-list">
-        {productState.map((item) => {
-          return <ProductItem key={item.id} product={item} />;
-        })}
-      </div>
+      <Link to="/favourite">Favourite{favState.length}</Link>
+      {productState.map((item) => {
+        return <ProductItem key={item.id} product={item} />;
+      })}
     </div>
   );
 };

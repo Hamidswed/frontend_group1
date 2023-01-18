@@ -1,20 +1,19 @@
 
-import { isBindExpression } from "@babel/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../../type/ProductType";
 
-type InitialType = {
+const favouriteItems=localStorage.getItem('favorites')!=null ? JSON.parse(localStorage.getItem('favorites') as string):[]
+
+type InitialType = {                                 
   products: ProductType[];
   favorites:ProductType[];
-  isExist:boolean;
   carts: ProductType[];
   totalPrice: number;
 };
 
 const initialState: InitialType = {
   products: [],
-  favorites:[],
-  isExist:false,
+  favorites:favouriteItems,
   carts: [],
   totalPrice: 0,
 };
@@ -59,16 +58,24 @@ const productSlice = createSlice({
         return acc + curr.qty * curr.price;
       }, 0);
     },
+
     getFavoriteData:(state,action)=>
     {
-const id=action.payload.id;
-      if( state.isExist===false)
-      {
-        state.favorites.push(action.payload)
-      }
-       
+        state.favorites.push(action.payload)  
+       localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
+        
+    },
+    removeFromFavourite:(state,action)=>
+    {
+      const index = state.favorites.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      index >= 0 && state.favorites.splice(index, 1);
+
     }
+  
   },
+  
 });
 export const actions = productSlice.actions;
 export default productSlice.reducer;

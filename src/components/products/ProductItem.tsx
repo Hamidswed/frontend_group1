@@ -61,7 +61,7 @@ const ProductItem = ({ product }: PropType) => {
   const [storeIndex, setStoreIndex] = useState(-1);
   const [storeCount, setStoreCount] = useState(0);
   const cartState = useSelector((state: RootState) => state.product.carts);
-  const dispatch = useDispatch();
+  
 
   useEffect(() => {
     const index = cartState.findIndex((item) => item.id === product.id);
