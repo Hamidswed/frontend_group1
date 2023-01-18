@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+
 // store redux components
 import FavoriteItem from "./FavoriteItem"
 import {RootState } from "../../redux/store"
@@ -13,41 +13,10 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-/* function createData(
-  id: number,
-  title: string,
-  price: number,
-  remove:string,
-  buy:string,
- 
-) {
-  return {
-    id,
-    title,
-    price,
-    remove,
-  buy,
-  };
-}
- */
 
 
 const FavoriteList=()=>{
   const favoriteList=useSelector((state:RootState)=>state.product.favorites);
-//const favouriteState = useSelector((state: RootState) => state.product.favorites);
- //const cartRows = 
- //favoriteList.map((cart) => {
- /*  return createData(
-    cart.id,
-    cart.title,
-    cart.price,
-    cart.category,
-    cart.category,
-   
-  ); */
-//}); 
-// const cat = localStorage.getItem('favoriteList');
 return (
   <div>
    

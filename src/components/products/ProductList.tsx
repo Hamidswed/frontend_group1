@@ -17,9 +17,9 @@ const ProductList = () => {
   }, [dispatch]);
 
   return (
-    <div className="product-list">
+    <div>
       <Link to="/cart">Cart {cartState.length}</Link>
-      <Link to="/favourite">Favourite </Link>
+      <Link to="/favourite">favourite </Link>
       {productState.map((item) => {
         return <ProductItem key={item.id} product={item} />;
       })}
