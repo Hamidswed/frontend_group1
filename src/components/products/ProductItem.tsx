@@ -1,6 +1,7 @@
 
 import { AppDispatch,RootState } from "../../redux/store";
 import { useSelector,useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 //mui
 import { styled } from "@mui/material/styles";
@@ -21,15 +22,15 @@ import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 //import Rating from '@mui/material/Rating';
 
-import { ProductType } from "../../type/ProductType";
-import { actions } from "../../redux/slice/product";
-import { useState } from "react";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+//import { ProductType } from "../../type/ProductType";
+//import { actions } from "../../redux/slice/product";
+//import { useState } from "react";
+//import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { ProductType } from "../../type/ProductType";
-import { useDispatch, useSelector } from "react-redux";
+//import { useDispatch, useSelector } from "react-redux";
 import { actions } from "./../../redux/slice/product";
-import { RootState } from "../../redux/store";
+//import { RootState } from "../../redux/store";
 import { useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
 
@@ -65,7 +66,7 @@ const ProductItem = ({ product }: PropType) => {
   const [storeIndex, setStoreIndex] = useState(-1);
   const [storeCount, setStoreCount] = useState(0);
   const cartState = useSelector((state: RootState) => state.product.carts);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   useEffect(() => {
     const index = cartState.findIndex((item) => item.id === product.id);
@@ -137,6 +138,7 @@ const ProductItem = ({ product }: PropType) => {
         </Snackbar>
     
       }
+      </CardActions>
       <CardActions
         disableSpacing
         sx={{ display: "flex", justifyContent: "space-between" }}
@@ -161,7 +163,8 @@ const ProductItem = ({ product }: PropType) => {
         )}
 
         <IconButton>
-          <MoreHorizIcon />
+          
+          <Link to = {`/products/${product.id}`}><MoreHorizIcon /></Link>
         </IconButton>
       </CardActions>
     </Card>

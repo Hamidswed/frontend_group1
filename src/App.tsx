@@ -4,14 +4,15 @@ import Home from './pages/Home';
 import FavoriteList from "./components/wishlist/FavoriteList";
 import Products from './pages/Products';
 import Cart from './pages/Cart';
+import ProductDetail from "./components/products/ProductDetail";
 
 function App() {
   return <div className="App">
-    {/* <Routes>
+     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/products" element={<Products/>}/>
-      <Products/>
-      <FavoriteList/>
+      <Route path="/products/:id" element = {<ProductDetail/>}></Route>
+      
       <Route path="/cart" element={<Cart/>}/>
     </Routes>
   </div>;

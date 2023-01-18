@@ -1,7 +1,7 @@
 
 import { isBindExpression } from "@babel/types";
 import { createSlice } from "@reduxjs/toolkit";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../../type/ProductType";
 
 type InitialType = {
