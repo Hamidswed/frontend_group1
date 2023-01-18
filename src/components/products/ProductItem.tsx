@@ -1,4 +1,6 @@
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch,RootState } from "../../redux/store";
+import { useSelector,useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 //mui
 import { styled } from "@mui/material/styles";
@@ -19,7 +21,10 @@ import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 //import Rating from '@mui/material/Rating';
 
+//import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
 import { ProductType } from "../../type/ProductType";
+import { RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "./../../redux/slice/product";
 import { useEffect, useState } from "react";
@@ -61,8 +66,7 @@ const ProductItem = ({ product }: PropType) => {
   const [storeIndex, setStoreIndex] = useState(-1);
   const [storeCount, setStoreCount] = useState(0);
   const cartState = useSelector((state: RootState) => state.product.carts);
-  
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const index = cartState.findIndex((item) => item.id === product.id);
     setStoreIndex(index);
@@ -157,7 +161,8 @@ const ProductItem = ({ product }: PropType) => {
         )}
 
         <IconButton>
-          <MoreHorizIcon />
+          
+          <Link to = {`/products/${product.id}`}><MoreHorizIcon /></Link>
         </IconButton>
       </CardActions>
     </Card>
