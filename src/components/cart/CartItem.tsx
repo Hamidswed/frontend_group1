@@ -45,7 +45,6 @@ const CartItem = ({ cart }: PropType) => {
           <Button
             variant="outlined"
             onClick={() => dispatch(actions.addToCart(cart))}
-            size="small"
           >
             +
           </Button>
