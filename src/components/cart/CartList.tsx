@@ -7,6 +7,7 @@ import {
   Paper,
   IconButton,
   Tooltip,
+<<<<<<< HEAD
   Button,
   Alert,
   Snackbar,
@@ -23,6 +24,18 @@ import { actions } from "./../../redux/slice/product";
 import { useEffect, useState } from "react";
 
 function createData(
+=======
+} from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+ import { Link } from "react-router-dom";
+ import { RootState } from "../../redux/store";
+ import { ProductType } from "../../type/ProductType";
+ import CartItem from "./CartItem";
+ import { actions } from "./../../redux/slice/product";
+ import { useEffect } from "react";
+
+ function createData(
+>>>>>>> e3454ed (NavBar and Footer)
   id: number,
   title: string,
   price: number,
@@ -46,6 +59,7 @@ function createData(
     qty,
   };
 }
+<<<<<<< HEAD
 const CartList = () => {
   const [open, setOpen] = useState(false);
 
@@ -159,3 +173,5 @@ const CartList = () => {
   );
 };
 export default CartList;
+=======
+>>>>>>> e3454ed (NavBar and Footer)

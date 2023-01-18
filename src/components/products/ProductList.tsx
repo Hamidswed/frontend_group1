@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { AppDispatch, RootState } from "../../redux/store";
@@ -28,3 +29,14 @@ const ProductList = () => {
   );
 };
 export default ProductList;
+=======
+import React from 'react'
+
+export default function ProductList() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+>>>>>>> e3454ed (NavBar and Footer)

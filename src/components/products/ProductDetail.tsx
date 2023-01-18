@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -70,3 +71,14 @@ export default function ProductDetail(){
       </Box>
     );
 }
+=======
+import React from 'react'
+
+export default function ProductDetail() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+>>>>>>> e3454ed (NavBar and Footer)
