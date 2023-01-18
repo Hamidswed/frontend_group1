@@ -159,5 +159,3 @@ const CartList = () => {
   );
 };
 export default CartList;
-=======
->>>>>>> e3454ed (NavBar and Footer)
