@@ -7,10 +7,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
-<<<<<<< HEAD
-=======
     "@mui/styled-engine": "^5.11.0",
->>>>>>> e3454ed (NavBar and Footer)
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
