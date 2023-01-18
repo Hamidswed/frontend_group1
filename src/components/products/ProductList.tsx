@@ -19,6 +19,7 @@ const ProductList = () => {
   return (
     <div className="product-list">
       <Link to="/cart">Cart {cartState.length}</Link>
+      <Link to="/favourite">Favourite </Link>
       {productState.map((item) => {
         return <ProductItem key={item.id} product={item} />;
       })}

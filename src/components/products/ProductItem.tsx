@@ -23,13 +23,8 @@ import Alert from "@mui/material/Alert";
 
 import { ProductType } from "../../type/ProductType";
 import { actions } from "../../redux/slice/product";
-import { useState } from "react";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-import { ProductType } from "../../type/ProductType";
-import { useDispatch, useSelector } from "react-redux";
-import { actions } from "./../../redux/slice/product";
-import { RootState } from "../../redux/store";
+
 import { useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
 
@@ -46,8 +41,11 @@ const ProductItem = ({ product }: PropType) => {
   
   function addToFavorite()
   {
-
-    dispatch(actions.getFavoriteData(product));
+if(!isExist)
+{
+  dispatch(actions.getFavoriteData(product));
+}
+   
     isExist?setOpen(true) :setOpenFail(true)
     isExist ?  setAlert(false) :  setAlert(true)
   }
@@ -65,7 +63,7 @@ const ProductItem = ({ product }: PropType) => {
   const [storeIndex, setStoreIndex] = useState(-1);
   const [storeCount, setStoreCount] = useState(0);
   const cartState = useSelector((state: RootState) => state.product.carts);
-  const dispatch = useDispatch();
+  
 
   useEffect(() => {
     const index = cartState.findIndex((item) => item.id === product.id);
@@ -119,7 +117,7 @@ const ProductItem = ({ product }: PropType) => {
         />
       </CardContent>
 
-      <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}>
+      <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}/>
         <IconButton aria-label="add to favorites" onClick={addToFavorite}>
           <FavoriteIcon sx={{color:isExist? "red":"green"}} />
         </IconButton>
