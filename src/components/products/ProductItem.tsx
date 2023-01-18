@@ -81,18 +81,12 @@ const ProductItem = ({ product }: PropType) => {
   };
 
   return (
-    
     <Card sx={{ width: 300 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
             {product.title.charAt(0).toUpperCase()}
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
         }
         title={product.title.slice(0, 20)}
         subheader={product.category}
@@ -158,12 +152,11 @@ const ProductItem = ({ product }: PropType) => {
             </Button>
           </div>
         )}
-
-        <IconButton>
-          <Link to={`/products/${product.id}`}>
+        <Link to={`/products/${product.id}`}>
+          <IconButton>
             <MoreHorizIcon />
-          </Link>
-        </IconButton>
+          </IconButton>
+        </Link>
       </CardActions>
     </Card>
   );

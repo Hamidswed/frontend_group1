@@ -4,21 +4,22 @@
   font-family: 'Lato', sans-serif;
 }
 .App {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   padding: 60px 100px;
 }
 
 .home-hero{
-  position: relative;
+  position: relative; 
   top: -60px;
-  left: -100px;
+  left: -100px; 
+  margin-top: 50px;
   max-width: 100vw;
   max-height: 100vh;
 }
 .home-hero img{
-  position: absolute;
-  top: 0;
-  left: 0;
   max-width: 100vw;
   z-index: 0;
 }
@@ -74,7 +75,7 @@
   margin-top: 10px;
   justify-content: space-around;
   align-items: center;
-  color: black;
+  background-color: black;
   width: 50%;
   padding: 15px 20px;
 }

@@ -1,21 +1,37 @@
-
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../../type/ProductType";
 
-const favouriteItems=localStorage.getItem('favorites')!=null ? JSON.parse(localStorage.getItem('favorites') as string):[]
+const favouriteItems =
+  localStorage.getItem("favorites") != null
+    ? JSON.parse(localStorage.getItem("favorites") as string)
+    : [];
 
-type InitialType = {                                 
+type InitialType = {
   products: ProductType[];
-  favorites:ProductType[];
+  productDetail: ProductType;
+  favorites: ProductType[];
   carts: ProductType[];
   totalPrice: number;
 };
 
 const initialState: InitialType = {
   products: [],
-  favorites:favouriteItems,
+  favorites: favouriteItems,
   carts: [],
   totalPrice: 0,
+  productDetail: {
+    id: 0,
+    title: "",
+    price: 0,
+    description: "",
+    category: "",
+    image: "",
+    rating: {
+      rate: 0,
+      count: 0,
+    },
+    qty: 0,
+  },
 };
 
 const productSlice = createSlice({
@@ -24,6 +40,9 @@ const productSlice = createSlice({
   reducers: {
     getProductData: (state, action) => {
       state.products = action.payload;
+    },
+    getProductDetailData: (state, action) => {
+      state.productDetail = action.payload;
     },
     addToCart: (state, action: PayloadAction<ProductType>) => {
       const index = state.carts.findIndex(
@@ -59,19 +78,18 @@ const productSlice = createSlice({
       }, 0);
     },
 
-    getFavoriteData:(state,action)=>
-    {
-        state.favorites.push(action.payload)  
-       localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
-        
+    getFavoriteData: (state, action) => {
+      state.favorites.push(action.payload);
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify(state.favorites.map((item) => item))
+      );
     },
-    removeFromFavourite:(state,action)=>
-    {
+    removeFromFavourite: (state, action) => {
       const index = state.favorites.findIndex(
         (item) => item.id === action.payload.id
       );
       index >= 0 && state.favorites.splice(index, 1);
-
     },
     sortNameAscending: (state) => {
       state.products.sort((a, b): number => {
@@ -89,7 +107,7 @@ const productSlice = createSlice({
 
     sortPriceAscending: (state) => {
       state.products.sort((a, b): number => {
-        return a.price - b.price
+        return a.price - b.price;
       });
     },
 
@@ -106,9 +124,7 @@ const productSlice = createSlice({
         return 0;
       });
     },
-  
   },
-  
 });
 export const actions = productSlice.actions;
 export default productSlice.reducer;
