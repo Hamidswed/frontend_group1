@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { AppDispatch,RootState } from "../../redux/store";
 import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -169,14 +168,3 @@ const ProductItem = ({ product }: PropType) => {
   );
 };
 export default ProductItem;
-=======
-import React from 'react'
-
-export default function ProductItem() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
->>>>>>> e3454ed (NavBar and Footer)
