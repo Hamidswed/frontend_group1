@@ -11,8 +11,6 @@ import {
   TableCell,
   TableRow, 
 } from "@mui/material";
-
-
 type PropType={
   favourite:ProductType;
   quantity:number;
@@ -52,8 +50,6 @@ dispatch(actions.addToCart(favourite))
         </TableCell>
       </TableRow>
     </TableBody>
-   
   );
- 
 }
 export default FavoriteItem;

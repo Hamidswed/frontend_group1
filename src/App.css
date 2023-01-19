@@ -2,10 +2,21 @@
   box-sizing: border-box;
   margin: 0;
 }
-.App {
+ .App {
   text-align: center;
   padding: 60px 100px;
-}
+} 
+/* .products-page
+{text-align: center;
+  padding: 60px 100px;
+} */
+/* .footer
+{
+  position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+} */
 
 .product-list{
   display: flex;
@@ -60,7 +71,12 @@
  height: 350px;
  background-color: #f6321d;
  border-radius: 60%;
+}
 
 
-
+.filterAndSearch {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+ 
 }

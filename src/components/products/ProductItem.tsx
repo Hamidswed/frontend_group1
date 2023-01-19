@@ -115,7 +115,8 @@ const ProductItem = ({ product }: PropType) => {
       </CardContent>
 
 
-      <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}/>
+     {/*  <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}/> */}
+       
         <IconButton aria-label="add to favorites" onClick={addToFavorite}>
           <FavoriteIcon sx={{color:isExist? "red":"green"}} />
         </IconButton>
@@ -132,30 +133,14 @@ const ProductItem = ({ product }: PropType) => {
         <Alert severity="success">The  {product.title} added Succesfully</Alert>
         </Snackbar>
     
-      }
+      }  
 
-      <CardActions
+
+
+       <CardActions
         disableSpacing
         sx={{ display: "flex", justifyContent: "space-between" }}
       >
-        <IconButton aria-label="add to favorites" onClick={addToFavorite}>
-          <FavoriteIcon sx={{ color: isExist ? "red" : "gray" }} />
-        </IconButton>
-        {!alert ? (
-          <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
-            <Alert severity="warning">The {product.title} exist already</Alert>
-          </Snackbar>
-        ) : (
-          <Snackbar
-            open={openFail}
-            autoHideDuration={1000}
-            onClose={handleClose}
-          >
-            <Alert severity="success">
-              The {product.title} added Succesfully
-            </Alert>
-          </Snackbar>
-        )}
         {storeIndex < 0 ? (
           <IconButton onClick={addToCartHandler}>
             <AddShoppingCartIcon />

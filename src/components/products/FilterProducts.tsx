@@ -1,3 +1,4 @@
+
  import * as React from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -19,7 +20,7 @@ export default function FilterProducts() {
     console.log(value, "value");
     setAge(value);
 
-   /*  if (value === "Name") {
+     if (value === "Name") {
       dispatch(actions.sortNameAscending());
     }
     if (value === "Price") {
@@ -27,11 +28,12 @@ export default function FilterProducts() {
     }
     if (value === "Category") {
       dispatch(actions.sortCategoryAscending());
-    } */
+    } 
   };
 
-  return ;
-   /*  <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+  return (
+    //  <Box sx={{ display: "flex", justifyContent: "flex-end",width:"150px" }}>
+    <Box component="form"sx={{'& > :not(style)': { m: 1, width: '150px',height:'50px' },}}>
       <FormControl sx={{ width: 0.1, }} size="small">
         <InputLabel id="demo-simple-select-label">Sort</InputLabel>
         <Select
@@ -46,7 +48,7 @@ export default function FilterProducts() {
           <MenuItem value="Category">Category</MenuItem>
         </Select>
       </FormControl>
-    </Box> */
+    </Box> );
  
 }
  

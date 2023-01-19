@@ -18,6 +18,7 @@ function App() {
       <Route path="/favourite" element={<WishList/>} />
       <Route path="/cart" element={<Cart/>}/>     
     </Routes> 
+    <Products/>
     <Footer/>
   </div>;
 }

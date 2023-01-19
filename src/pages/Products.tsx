@@ -1,5 +1,5 @@
 
-//import FilterProducts from "../components/products/FilterProducts";
+import FilterProducts from "../components/products/FilterProducts";
 import ProductList from "../components/products/ProductList";
 import Search from "../components/search/Search";
 import { useState } from "react";
@@ -10,10 +10,13 @@ const Products = () => {
   return (
     <div className="products-page">
       <h2>Product List</h2>
-       <Search userInput={userInput} setUserInput={setUserInput} /> 
-      <ProductList   userInput={userInput} />
+      <div className="filterAndSearch">
+      <Search userInput={userInput} setUserInput={setUserInput} /> 
+        <FilterProducts/>
+      </div>
+      
+      <ProductList userInput={userInput} />
     </div>
   );
- 
 };
 export default Products;

@@ -1,11 +1,9 @@
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
-
 type PropType = {
   userInput: string
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
 };
-
 const Search = ({ userInput, setUserInput }: PropType) => {
    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -15,7 +13,7 @@ const Search = ({ userInput, setUserInput }: PropType) => {
  <Box
  component="form"
    sx={{
-     '& > :not(style)': { m: 1, width: '25ch' },
+     '& > :not(style)': { m: 1, width: '150px' },
    }}
    noValidate
    autoComplete="off"
