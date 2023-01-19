@@ -17,7 +17,6 @@ const initialState: InitialType = {
   carts: [],
   totalPrice: 0,
 };
-
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -63,7 +62,7 @@ const productSlice = createSlice({
     {
         state.favorites.push(action.payload)  
        localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
-        
+     
     },
     removeFromFavourite:(state,action)=>
     {
@@ -71,7 +70,7 @@ const productSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       index >= 0 && state.favorites.splice(index, 1);
-
+      localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
     },
     sortNameAscending: (state) => {
       state.products.sort((a, b): number => {
@@ -92,7 +91,6 @@ const productSlice = createSlice({
         return a.price - b.price
       });
     },
-
     sortCategoryAscending: (state) => {
       state.products.sort((a, b): number => {
         const nameA = a.category.toUpperCase();
@@ -106,9 +104,7 @@ const productSlice = createSlice({
         return 0;
       });
     },
-  
-  },
-  
+   },
 });
 export const actions = productSlice.actions;
 export default productSlice.reducer;

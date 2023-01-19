@@ -13,7 +13,6 @@ import {
   styled,
 } from "@mui/material";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
-
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
