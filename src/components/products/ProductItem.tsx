@@ -1,5 +1,5 @@
-import { AppDispatch,RootState } from "../../redux/store";
-import { useSelector,useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 //mui
@@ -14,7 +14,6 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
@@ -30,19 +29,21 @@ type PropType = {
 };
 
 const ProductItem = ({ product }: PropType) => {
-  const dispatch=useDispatch<AppDispatch>();
-  const favaoriteList=useSelector((state:RootState)=>state.product.favorites);
-  const isExist=favaoriteList.some((favoriteItem:any)=>Number(favoriteItem.id)===Number(product.id))
+  const dispatch = useDispatch<AppDispatch>();
+  const favaoriteList = useSelector(
+    (state: RootState) => state.product.favorites
+  );
+  const isExist = favaoriteList.some(
+    (favoriteItem) => Number(favoriteItem.id) === Number(product.id)
+  );
   const dispatchFunc = useDispatch<AppDispatch>();
   function addToFavorite() {
-    if(!isExist)
-    {
+    if (!isExist) {
       dispatchFunc(actions.getFavoriteData(product));
     }
-    
+
     isExist ? setOpen(true) : setOpenFail(true);
     isExist ? setAlert(false) : setAlert(true);
-
   }
   //snackbar Logic
   const [open, setOpen] = useState<boolean>(false);
@@ -77,18 +78,12 @@ const ProductItem = ({ product }: PropType) => {
   };
 
   return (
-    
     <Card sx={{ width: 300 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
             {product.title.charAt(0).toUpperCase()}
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
         }
         title={product.title.slice(0, 20)}
         subheader={product.category}
@@ -113,27 +108,6 @@ const ProductItem = ({ product }: PropType) => {
           sx={{ marginTop: "10px" }}
         />
       </CardContent>
-
-
-      <CardActions disableSpacing sx={{display:"flex",justifyContent:"space-between"}}/>
-        <IconButton aria-label="add to favorites" onClick={addToFavorite}>
-          <FavoriteIcon sx={{color:isExist? "red":"green"}} />
-        </IconButton>
-        {
-          !alert ? 
-        (    
-        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
-        <Alert severity="warning">The {product.title} exist already</Alert>
-        </Snackbar>
-      
-        ):
-      
-        <Snackbar  open={openFail} autoHideDuration={1000} onClose={handleClose}>
-        <Alert severity="success">The  {product.title} added Succesfully</Alert>
-        </Snackbar>
-    
-      }
-
       <CardActions
         disableSpacing
         sx={{ display: "flex", justifyContent: "space-between" }}
@@ -152,7 +126,7 @@ const ProductItem = ({ product }: PropType) => {
             onClose={handleClose}
           >
             <Alert severity="success">
-              The {product.title} added Succesfully
+              The {product.title} added Succesfully!
             </Alert>
           </Snackbar>
         )}
@@ -175,11 +149,11 @@ const ProductItem = ({ product }: PropType) => {
             </Button>
           </div>
         )}
-
-        <IconButton>
-          
-          <Link to = {`/products/${product.id}`}><MoreHorizIcon /></Link>
-        </IconButton>
+        <Link to={`/products/${product.id}`}>
+          <IconButton>
+            <MoreHorizIcon />
+          </IconButton>
+        </Link>
       </CardActions>
     </Card>
   );
