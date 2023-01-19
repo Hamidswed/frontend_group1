@@ -13,12 +13,12 @@ import {
 import { useDispatch } from "react-redux";
 import { actions } from "../../redux/slice/product";
 import { AppDispatch } from "../../redux/store";
-type FavoriteListType={
+type PropType={
   favourite:ProductType;
   quantity:number;
 }
 
-const FavoriteItem=({favourite,quantity}:FavoriteListType)=>
+const FavoriteItem=({favourite,quantity}:PropType)=>
 {
   const dispatch=useDispatch<AppDispatch>();
 
@@ -28,9 +28,7 @@ dispatch(actions.removeFromFavourite(favourite))
 dispatch(actions.addToCart(favourite))
 }
 
-
-  return (
-   
+  return ( 
  <TableBody className="cart-item">
       <TableRow
         key={favourite.id}
@@ -52,20 +50,8 @@ dispatch(actions.addToCart(favourite))
         <TableCell align="center">
         <Button onClick={addToCart}>BUY</Button> 
         </TableCell>
-        
       </TableRow>
     </TableBody>
-   
   );
- 
 }
 export default FavoriteItem
-
-
-
-
-
-
-
-
-

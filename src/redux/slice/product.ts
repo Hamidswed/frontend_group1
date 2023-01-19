@@ -71,14 +71,40 @@ const productSlice = createSlice({
       );
       index >= 0 && state.favorites.splice(index, 1);
       localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
-       
     },
-  
+    sortNameAscending: (state) => {
+      state.products.sort((a, b): number => {
+        const nameA = a.title.toUpperCase();
+        const nameB = b.title.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+    },
 
-   
-  },
-
-  
+    sortPriceAscending: (state) => {
+      state.products.sort((a, b): number => {
+        return a.price - b.price
+      });
+    },
+    sortCategoryAscending: (state) => {
+      state.products.sort((a, b): number => {
+        const nameA = a.category.toUpperCase();
+        const nameB = b.category.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+    },
+   },
 });
 export const actions = productSlice.actions;
 export default productSlice.reducer;
