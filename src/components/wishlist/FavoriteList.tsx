@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 // store redux components
-import FavoriteItem from "../wishList/FavoriteItem";
+import FavoriteItem from "../wishlist/FavoriteItem";
 import { RootState } from "../../redux/store";
 
 //mui
