@@ -14,9 +14,8 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Skeleton, Snackbar } from "@mui/material";
+import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 //import Rating from '@mui/material/Rating';
 
@@ -30,19 +29,21 @@ type PropType = {
 };
 
 const ProductItem = ({ product }: PropType) => {
-  const dispatch=useDispatch<AppDispatch>();
-  const favaoriteList=useSelector((state:RootState)=>state.product.favorites);
-  const isExist=favaoriteList.some((favoriteItem:any)=>Number(favoriteItem.id)===Number(product.id))
+  const dispatch = useDispatch<AppDispatch>();
+  const favaoriteList = useSelector(
+    (state: RootState) => state.product.favorites
+  );
+  const isExist = favaoriteList.some(
+    (favoriteItem) => Number(favoriteItem.id) === Number(product.id)
+  );
   const dispatchFunc = useDispatch<AppDispatch>();
   function addToFavorite() {
-    if(!isExist)
-    {
+    if (!isExist) {
       dispatchFunc(actions.getFavoriteData(product));
     }
-    
+
     isExist ? setOpen(true) : setOpenFail(true);
     isExist ? setAlert(false) : setAlert(true);
-
   }
   //snackbar Logic
   const [open, setOpen] = useState<boolean>(false);
