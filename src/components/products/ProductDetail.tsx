@@ -23,7 +23,7 @@ export default function ProductDetail({ productDetail }: PropType) {
       <Card sx={{ display: "flex", width: 0.6, minHeight: 400 }}>
         <CardMedia
           component="img"
-          sx={{ width: 0.5,height:"fit-content", margin: "auto 10px" }}
+          sx={{ width: 0.5, maxHeight: "fit-content", margin: "auto 10px" }}
           image={productDetail.image}
           alt={productDetail.title}
         />
