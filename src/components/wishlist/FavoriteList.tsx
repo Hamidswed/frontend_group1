@@ -16,20 +16,20 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 
 const FavoriteList = () => {
   const favoriteList = useSelector(
     (state: RootState) => state.product.favorites
   );
   return (
-    <div>
+    <div className="cart-list">
       {favoriteList.length === 0 ? (
-        <div className="favorite-list-warning">
+        <div className="cart-list-warning">
           <Tooltip title="Back to products">
             <Link to="/products">
               <IconButton>
-                <FavoriteIcon />
+                <AddShoppingCartOutlinedIcon sx={{ fontSize: "50px" }} />
               </IconButton>
             </Link>
           </Tooltip>
@@ -41,7 +41,7 @@ const FavoriteList = () => {
           <TableContainer component={Paper} style={{ marginTop: "50px" }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
-                <TableRow sx={{ backgroundColor: " #f6321d" }}>
+                <TableRow sx={{ backgroundColor: "#ffb703" }}>
                   <TableCell align="center">
                     <strong>Item</strong>
                   </TableCell>
