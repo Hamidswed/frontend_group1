@@ -12,6 +12,7 @@ type InitialType = {
   favorites: ProductType[];
   carts: ProductType[];
   totalPrice: number;
+  themeMode: boolean;
 };
 
 const initialState: InitialType = {
@@ -19,6 +20,7 @@ const initialState: InitialType = {
   favorites: favouriteItems,
   carts: [],
   totalPrice: 0,
+  themeMode: false,
   productDetail: {
     id: 0,
     title: "",
@@ -89,7 +91,10 @@ const productSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       index >= 0 && state.favorites.splice(index, 1);
-      localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify(state.favorites.map((item) => item))
+      );
     },
     sortNameAscending: (state) => {
       state.products.sort((a, b): number => {
@@ -122,6 +127,9 @@ const productSlice = createSlice({
         }
         return 0;
       });
+    },
+    changeTheme: (state, action) => {
+      state.themeMode = action.payload;
     },
   },
 });
