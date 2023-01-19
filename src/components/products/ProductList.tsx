@@ -1,14 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { AppDispatch, RootState } from "../../redux/store";
 import ProductItem from "./ProductItem";
 import fetchProductData from "./../../redux/thunk/product";
-import { Link } from "react-router-dom";
 
-const ProductList = () => {
+type PropType = {
+  userInput: string;
+};
+
+const ProductList = ({ userInput }: PropType) => {
   const productState = useSelector(
     (state: RootState) => state.product.products
   );
+  //new code sahira
+  let productResult;
+  if (userInput) {
+    productResult = productState.filter((product) =>
+      product.title.toLowerCase().includes(userInput.toLowerCase())
+    );
+  } else productResult = productState;
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -23,7 +33,7 @@ const ProductList = () => {
         </div>
       )}
       <div className="product-list">
-        {productState.map((item) => {
+        {productResult.map((item) => {
           return <ProductItem key={item.id} product={item} />;
         })}
       </div>

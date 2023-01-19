@@ -1,31 +1,31 @@
-import React from 'react'
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { useSelector,useDispatch } from 'react-redux';
-import { RootState } from '../../redux/store';
-
-  type PropType = {
-    userInput: string;
-    setUserInput: React.Dispatch<React.SetStateAction<string>>;
+import TextField from "@mui/material/TextField";
+import { Box } from "@mui/system";
+type PropType = {
+  userInput: string
+  setUserInput: React.Dispatch<React.SetStateAction<string>>;
+};
+const Search = ({ userInput, setUserInput }: PropType) => {
+   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setUserInput(e.target.value);
   };
-  
-  const Search = ({ userInput, setUserInput }: PropType) => {
-    const dispatch = useDispatch();
-    const countriesList = useSelector(
-      (state: RootState) => state.product.products
-    );
-  
   return (
-    <Box
-    component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-    <TextField id="standard-basic" label="Standard" variant="standard" />
-    </Box>
-  )
-}
-export default Search
+ <Box
+ component="form"
+   sx={{
+     '& > :not(style)': { m: 1, width: '25ch' },
+   }}
+   noValidate
+   autoComplete="off"
+ >
+       <TextField
+        id="standard-basic"
+        label="Search Products"
+        variant="standard"
+        value={userInput}
+        onChange={inputHandler}
+        type="search"/>
+ </Box>
+  );
+};
+export default Search;

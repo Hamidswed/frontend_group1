@@ -33,7 +33,6 @@ const initialState: InitialType = {
     qty: 0,
   },
 };
-
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -90,6 +89,7 @@ const productSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       index >= 0 && state.favorites.splice(index, 1);
+      localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
     },
     sortNameAscending: (state) => {
       state.products.sort((a, b): number => {
@@ -110,7 +110,6 @@ const productSlice = createSlice({
         return a.price - b.price;
       });
     },
-
     sortCategoryAscending: (state) => {
       state.products.sort((a, b): number => {
         const nameA = a.category.toUpperCase();

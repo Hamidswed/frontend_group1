@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 //mui
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -21,31 +20,29 @@ import { Skeleton, Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 //import Rating from '@mui/material/Rating';
 
-//import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
 import { ProductType } from "../../type/ProductType";
-import { actions } from "./../../redux/slice/product";
 import { useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
+import { actions } from "../../redux/slice/product";
 
 type PropType = {
   product: ProductType;
 };
 
 const ProductItem = ({ product }: PropType) => {
-  // favorite Item Logic
+  const dispatch=useDispatch<AppDispatch>();
+  const favaoriteList=useSelector((state:RootState)=>state.product.favorites);
+  const isExist=favaoriteList.some((favoriteItem:any)=>Number(favoriteItem.id)===Number(product.id))
   const dispatchFunc = useDispatch<AppDispatch>();
-  const favaoriteList = useSelector(
-    (state: RootState) => state.product.favorites
-  );
-  const isExist = favaoriteList.some(
-    (favoriteItem) => favoriteItem.id === product.id
-  );
-
   function addToFavorite() {
-    dispatchFunc(actions.getFavoriteData(product));
+    if(!isExist)
+    {
+      dispatchFunc(actions.getFavoriteData(product));
+    }
+    
     isExist ? setOpen(true) : setOpenFail(true);
     isExist ? setAlert(false) : setAlert(true);
+
   }
   //snackbar Logic
   const [open, setOpen] = useState<boolean>(false);
@@ -64,7 +61,6 @@ const ProductItem = ({ product }: PropType) => {
   const [storeIndex, setStoreIndex] = useState(-1);
   const [storeCount, setStoreCount] = useState(0);
   const cartState = useSelector((state: RootState) => state.product.carts);
-  const dispatch = useDispatch();
   useEffect(() => {
     const index = cartState.findIndex((item) => item.id === product.id);
     setStoreIndex(index);
