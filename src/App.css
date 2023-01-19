@@ -64,8 +64,9 @@
   align-items: center;
   gap: 10px;
   width: 40%;
-  color: #ffb703;
+  background-color: #ffb703;
   padding: 100px 50px;
+  margin-top: 50px;
 }
 .cart-item img{
   width: 80px;
@@ -88,4 +89,10 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+.products-page{
+  margin-top: 40px;
+}
+.product-list{
+  margin-top: 10px;
 }

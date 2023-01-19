@@ -15,7 +15,7 @@ const ProductList = () => {
     dispatch(fetchProductData());
   }, [dispatch]);
   return (
-    <div>
+    <div className="product-list">
       {productState.length === 0 && (
         <div>
           <i className="fas fa-spinner fa-spin fa-xl" />

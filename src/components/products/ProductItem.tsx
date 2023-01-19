@@ -129,7 +129,7 @@ const ProductItem = ({ product }: PropType) => {
             onClose={handleClose}
           >
             <Alert severity="success">
-              The {product.title} added Succesfully
+              The {product.title} added Succesfully!
             </Alert>
           </Snackbar>
         )}
