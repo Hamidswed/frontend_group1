@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-
+import { Fragment } from "react";
+import { Link } from "react-router-dom";
 // store redux components
 import FavoriteItem from "./FavoriteItem"
 import {RootState } from "../../redux/store"
@@ -12,19 +13,35 @@ import {
   TableHead,
   TableRow,
   Paper,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const FavoriteList=()=>{
   const favoriteList=useSelector((state:RootState)=>state.product.favorites);
 return (
   <div>
-   
-    <h1> Favourite Items are </h1>
-    <TableContainer component={Paper} style={{ marginTop: "50px" }}>
+   {favoriteList.length === 0 ? (
+        <div className="favorite-list-warning">
+           <Tooltip title="Back to products">
+             <Link to="/products"> 
+          
+             <IconButton>
+                <FavoriteIcon/>
+              </IconButton>
+             </Link> 
+           </Tooltip> 
+           <em>Please add product to the Favourites!</em>
+        </div>
+      ) : 
+      (
+        <Fragment>
+       <h3> Favourite Items are</h3>   
+<TableContainer component={Paper} style={{ marginTop: "50px" }}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow  sx={{ backgroundColor:" #f6321d"  }} >
             <TableCell align="center">
               <strong>Item</strong>
             </TableCell>
@@ -49,6 +66,8 @@ return (
     })}
       </Table>
     </TableContainer>
+        </Fragment>
+     ) }
    
   </div>
 );

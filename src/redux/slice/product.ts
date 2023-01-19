@@ -1,3 +1,4 @@
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../../type/ProductType";
 
@@ -16,7 +17,6 @@ const initialState: InitialType = {
   carts: [],
   totalPrice: 0,
 };
-
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -62,7 +62,7 @@ const productSlice = createSlice({
     {
         state.favorites.push(action.payload)  
        localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
-        
+     
     },
     removeFromFavourite:(state,action)=>
     {
@@ -70,10 +70,14 @@ const productSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       index >= 0 && state.favorites.splice(index, 1);
-
-    }
+      localStorage.setItem('favorites',JSON.stringify(state.favorites.map((item)=>item)))
+       
+    },
   
+
+   
   },
+
   
 });
 export const actions = productSlice.actions;

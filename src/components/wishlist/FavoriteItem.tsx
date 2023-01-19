@@ -13,9 +13,6 @@ import {
 import { useDispatch } from "react-redux";
 import { actions } from "../../redux/slice/product";
 import { AppDispatch } from "../../redux/store";
-
-
-
 type FavoriteListType={
   favourite:ProductType;
   quantity:number;
@@ -33,8 +30,8 @@ dispatch(actions.addToCart(favourite))
 
 
   return (
-    
-    <TableBody className="cart-item">
+   
+ <TableBody className="cart-item">
       <TableRow
         key={favourite.id}
         sx={{
@@ -53,11 +50,12 @@ dispatch(actions.addToCart(favourite))
 </IconButton>
         </TableCell>
         <TableCell align="center">
-        <Button onClick={addToCart}> BUY</Button> 
+        <Button onClick={addToCart}>BUY</Button> 
         </TableCell>
         
       </TableRow>
     </TableBody>
+   
   );
  
 }

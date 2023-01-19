@@ -1,4 +1,6 @@
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch,RootState } from "../../redux/store";
+import { useSelector,useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 //mui
 import Card from "@mui/material/Card";
@@ -16,45 +18,32 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
-// store and components
+//import Rating from '@mui/material/Rating';
+
 import { ProductType } from "../../type/ProductType";
-import { actions } from "../../redux/slice/product";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
+import { actions } from "../../redux/slice/product";
 
 type PropType = {
   product: ProductType;
 };
 
 const ProductItem = ({ product }: PropType) => {
-  // favorite Item Logic
- 
   const dispatch=useDispatch<AppDispatch>();
-  //const favaoriteList=useSelector((state:RootState)=>state.product.favorites);
-  //const isExist=favaoriteList.some((favoriteItem:any)=>favoriteItem.id==product.id);
-  
- 
-  
-   function addToFavorite()
-   {
- if(!isExist)
- {
-   dispatch(actions.getFavoriteData(product));
- }
+  const favaoriteList=useSelector((state:RootState)=>state.product.favorites);
+  const isExist=favaoriteList.some((favoriteItem:any)=>Number(favoriteItem.id)===Number(product.id))
+  const dispatchFunc = useDispatch<AppDispatch>();
+  function addToFavorite() {
+    if(!isExist)
+    {
+      dispatchFunc(actions.getFavoriteData(product));
+    }
     
-     isExist?setOpen(true) :setOpenFail(true)
-     isExist ?  setAlert(false) :  setAlert(true)
-   }
+    isExist ? setOpen(true) : setOpenFail(true);
+    isExist ? setAlert(false) : setAlert(true);
 
-  const favaoriteList = useSelector(
-    (state: RootState) => state.product.favorites
-  );
-  const isExist = favaoriteList.some(
-    (favoriteItem) => favoriteItem.id === product.id
-  );
-
- 
+  }
   //snackbar Logic
   const [open, setOpen] = useState<boolean>(false);
   const [openFail, setOpenFail] = useState<boolean>(false);
@@ -72,8 +61,6 @@ const ProductItem = ({ product }: PropType) => {
   const [storeIndex, setStoreIndex] = useState(-1);
   const [storeCount, setStoreCount] = useState(0);
   const cartState = useSelector((state: RootState) => state.product.carts);
-  
-
   useEffect(() => {
     const index = cartState.findIndex((item) => item.id === product.id);
     setStoreIndex(index);
@@ -145,6 +132,7 @@ const ProductItem = ({ product }: PropType) => {
         </Snackbar>
     
       }
+
       <CardActions
         disableSpacing
         sx={{ display: "flex", justifyContent: "space-between" }}
@@ -188,7 +176,8 @@ const ProductItem = ({ product }: PropType) => {
         )}
 
         <IconButton>
-          <MoreHorizIcon />
+          
+          <Link to = {`/products/${product.id}`}><MoreHorizIcon /></Link>
         </IconButton>
       </CardActions>
     </Card>

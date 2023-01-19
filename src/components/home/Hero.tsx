@@ -15,7 +15,7 @@ export default function Hero()
 </div>
 
 <img src={Model1} alt ="Modelimgages" className="ModelImage display1"></img>
-<img src={Model2} alt ="Modelimgages" className="ModelImage display2"></img>
+<img src={Model2} alt ="Modelimgages" className="ModelImage display2"></img> 
     </div>;
     
 }
