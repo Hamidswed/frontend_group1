@@ -13,11 +13,15 @@ import styled from "@emotion/styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import Switch from "@mui/material/Switch";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { RootState } from "../../redux/store";
+import { useDispatch } from "react-redux/es/exports";
+import { actions } from "../../redux/slice/product";
+import { AppDispatch } from "../../redux/store";
 
 const StyledBadge = styled(Badge)<BadgeProps>(() => ({
   "& .MuiBadge-badge": {
@@ -30,6 +34,12 @@ const StyledBadge = styled(Badge)<BadgeProps>(() => ({
 export default function NavBar() {
   const favList = useSelector((state: RootState) => state.product.favorites);
   const cartState = useSelector((state: RootState) => state.product.carts);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let mode = event.target.checked;
+    dispatch(actions.changeTheme(mode));
+  };
 
   return (
     <Box
@@ -85,6 +95,7 @@ export default function NavBar() {
                 <ShoppingCartIcon />
               </StyledBadge>
             </MenuItem>
+            <Switch onChange={handleChange} color = "default"/>
           </Box>
         </Toolbar>
       </AppBar>
