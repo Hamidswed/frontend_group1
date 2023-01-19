@@ -10,10 +10,10 @@ const Products = () => {
   return (
     <div className="products-page">
       <h2>Product List</h2>
-      <div className="filterAndSearch">
+       <div className="filterAndSearch">
       <Search userInput={userInput} setUserInput={setUserInput} /> 
         <FilterProducts/>
-      </div>
+      </div> 
       
       <ProductList userInput={userInput} />
     </div>
