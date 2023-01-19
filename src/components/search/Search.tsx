@@ -1,4 +1,5 @@
 import TextField from "@mui/material/TextField";
+import { Box } from "@mui/system";
 
 type PropType = {
   userInput: string
@@ -6,14 +7,19 @@ type PropType = {
 };
 
 const Search = ({ userInput, setUserInput }: PropType) => {
-  
    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setUserInput(e.target.value);
-    
   };
-  return (
-    <div>
+  return (  
+ <Box
+ component="form"
+   sx={{
+     '& > :not(style)': { m: 1, width: '25ch' },
+   }}
+   noValidate
+   autoComplete="off"
+ >
        <TextField
         id="standard-basic"
         label="Search Products"
@@ -21,10 +27,8 @@ const Search = ({ userInput, setUserInput }: PropType) => {
         value={userInput}
         onChange={inputHandler}
         type="search"/> 
-     
-    </div>
+ </Box>
   );
 };
 
 export default Search;
-

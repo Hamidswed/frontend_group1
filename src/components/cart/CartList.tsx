@@ -14,14 +14,16 @@ import {
 } from "@mui/material";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { RootState } from "../../redux/store";
-import CartItem from "./CartItem";
-import { actions } from "./../../redux/slice/product";
-import { useEffect, useState } from "react";
 
-function createData(
+import CartItem from "./CartItem";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+ import { Link } from "react-router-dom";
+ import { RootState } from "../../redux/store";
+ import { ProductType } from "../../type/ProductType";
+ import { actions } from "./../../redux/slice/product";
+
+ function createData(
   id: number,
   title: string,
   price: number,

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-// store redux components
-import FavoriteItem from "./FavoriteItem"
+
+import FavoriteItem from "./FavoriteItem";
 import {RootState } from "../../redux/store"
 
 //mui
@@ -25,8 +25,7 @@ return (
    {favoriteList.length === 0 ? (
         <div className="favorite-list-warning">
            <Tooltip title="Back to products">
-             <Link to="/products"> 
-          
+             <Link to="/products">           
              <IconButton>
                 <FavoriteIcon/>
               </IconButton>

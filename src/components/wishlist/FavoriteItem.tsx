@@ -1,5 +1,7 @@
 import { ProductType } from "../../type/ProductType";
-
+import { useDispatch } from "react-redux";
+import { actions } from "../../redux/slice/product";
+import { AppDispatch } from "../../redux/store";
 //mui
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {
@@ -7,18 +9,16 @@ import {
   IconButton,
   TableBody,
   TableCell,
-  TableRow,
-  
+  TableRow, 
 } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { actions } from "../../redux/slice/product";
-import { AppDispatch } from "../../redux/store";
-type FavoriteListType={
+
+
+type PropType={
   favourite:ProductType;
   quantity:number;
 }
 
-const FavoriteItem=({favourite,quantity}:FavoriteListType)=>
+const FavoriteItem=({favourite,quantity}:PropType)=>
 {
   const dispatch=useDispatch<AppDispatch>();
 
@@ -27,11 +27,9 @@ function addToCart()
 dispatch(actions.removeFromFavourite(favourite))
 dispatch(actions.addToCart(favourite))
 }
-
-
   return (
    
- <TableBody className="cart-item">
+ <TableBody className="favourite-item">
       <TableRow
         key={favourite.id}
         sx={{
@@ -41,31 +39,21 @@ dispatch(actions.addToCart(favourite))
           bgColor: "none",
         }}
       >
-         <TableCell align="center">{quantity + " ."} </TableCell>
+        <TableCell align="center">{quantity + " ."} </TableCell>
         <TableCell align="center">{favourite.title.slice(0,20)} </TableCell>
         <TableCell align="center">{favourite.price}</TableCell>
         <TableCell align="center">
-        <IconButton onClick={()=>dispatch(actions.removeFromFavourite(favourite))}>
-<FavoriteIcon sx={{ color: "red" }} ></FavoriteIcon>
-</IconButton>
+  <IconButton onClick={()=>dispatch(actions.removeFromFavourite(favourite))}>
+    <FavoriteIcon sx={{ color: "red" }} ></FavoriteIcon>
+  </IconButton>
         </TableCell>
         <TableCell align="center">
-        <Button onClick={addToCart}>BUY</Button> 
+    <Button onClick={addToCart}>BUY</Button> 
         </TableCell>
-        
       </TableRow>
     </TableBody>
    
   );
  
 }
-export default FavoriteItem
-
-
-
-
-
-
-
-
-
+export default FavoriteItem;

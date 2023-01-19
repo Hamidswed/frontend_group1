@@ -1,3 +1,5 @@
+
+//import FilterProducts from "../components/products/FilterProducts";
 import ProductList from "../components/products/ProductList";
 import Search from "../components/search/Search";
 import { useState } from "react";
