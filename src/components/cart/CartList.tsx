@@ -16,12 +16,11 @@ import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutl
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
- import { Link } from "react-router-dom";
- import { RootState } from "../../redux/store";
- import { ProductType } from "../../type/ProductType";
- import { actions } from "./../../redux/slice/product";
+import { Link } from "react-router-dom";
+import { RootState } from "../../redux/store";
+import { actions } from "./../../redux/slice/product";
 
- function createData(
+function createData(
   id: number,
   title: string,
   price: number,
@@ -102,10 +101,11 @@ const CartList = () => {
               </IconButton>
             </Link>
           </Tooltip>
-          <em>Please add product to the cart!</em>
+          <em>Please add product to cart!</em>
         </div>
       ) : (
         <>
+        <h3> Cart List</h3>
           <TableContainer component={Paper} style={{ marginTop: "50px" }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>

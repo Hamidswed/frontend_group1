@@ -2,8 +2,8 @@ import { ProductType } from "../../type/ProductType";
 
 //mui
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import {
-  Button,
   IconButton,
   TableBody,
   TableCell,
@@ -47,7 +47,9 @@ const FavoriteItem = ({ favourite, quantity }: PropType) => {
           </IconButton>
         </TableCell>
         <TableCell align="center">
-          <Button onClick={addToCart}>BUY</Button>
+          <IconButton onClick={addToCart}>
+            <AddShoppingCartOutlinedIcon />
+          </IconButton>
         </TableCell>
       </TableRow>
     </TableBody>

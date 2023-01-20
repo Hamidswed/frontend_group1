@@ -41,10 +41,11 @@ const CartItem = ({ cart }: PropType) => {
           >
             -
           </Button>
-          <span style={{marginInline:"10px"}}>{cart.qty}</span>
+          <span style={{ marginInline: "10px" }}>{cart.qty}</span>
           <Button
             variant="outlined"
             onClick={() => dispatch(actions.addToCart(cart))}
+            size="small"
           >
             +
           </Button>
