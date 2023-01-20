@@ -42,9 +42,9 @@
   75%{color:black;}
   100% {color: #c77dff;}
 }
-.home-hero button{
+.home-hero a button{
   position: absolute;
-  top:55vh;
+  top:60vh;
   right:7vw;
 }
 .product-list{

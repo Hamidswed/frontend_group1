@@ -53,7 +53,7 @@ export default function NavBar() {
         zIndex: "100",
       }}
     >
-      <AppBar position="static" sx={{ backgroundColor: "#474747" }}>
+      <AppBar position="static">
         <Toolbar>
           <Logo style={{ width: "7%" }} />
           <Box sx={{ flexGrow: 1 }} />

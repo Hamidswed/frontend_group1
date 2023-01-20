@@ -21,7 +21,7 @@ export default function Footer() {
     >
       <AppBar
         position="static"
-        sx={{ backgroundColor: "#474747", height: "120px" }}
+        sx={{ height: "120px" }}
       >
         <Toolbar>
           <Typography
