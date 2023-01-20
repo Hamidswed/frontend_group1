@@ -57,7 +57,6 @@ return (
             <TableCell align="center">
               <strong>Buy</strong>
             </TableCell>
-           
           </TableRow>
         </TableHead>
 
