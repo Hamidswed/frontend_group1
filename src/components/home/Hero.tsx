@@ -19,7 +19,7 @@ export default function Hero() {
         alt="Backgroudimgages"
         className="backgroundImage"
       />
-      <h1>Bye <em>More</em><br/> <em>&</em><br/> Be <em>Happy</em></h1>
+      <h1>Buy <em>More</em><br/> <em>&</em><br/> Be <em>Happy</em></h1>
       <Link to="/products">
         <CheckOutBTN variant="outlined" size="large">
           Check out new collection!
