@@ -9,10 +9,11 @@ import {
   MenuItem,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import HomeIcon from "@mui/icons-material/Home";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
 import styled from "@emotion/styled";
-import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import Switch from "@mui/material/Switch";
 
 import { Link } from "react-router-dom";
@@ -54,37 +55,19 @@ export default function NavBar() {
     >
       <AppBar position="static" sx={{ backgroundColor: "#474747" }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <MenuItem component={Link} to={"/"}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
-            >
-              Home
-            </Typography>
-          </MenuItem>
-          <MenuItem component={Link} to={"/products"}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
-            >
-              Product list
-            </Typography>
-          </MenuItem>
+          <Logo style={{ width: "7%" }} />
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Link to="/">
+              <IconButton>
+                <HomeIcon sx={{color:"#fff"}}/>
+              </IconButton>
+            </Link>
+            <Link to="products">
+            <IconButton>
+                <FormatListBulletedIcon sx={{color:"#fff"}}/>
+              </IconButton>
+            </Link>
             <MenuItem component={Link} to={"/favorite"}>
               <StyledBadge badgeContent={favList.length} color="error">
                 <FavoriteIcon />
