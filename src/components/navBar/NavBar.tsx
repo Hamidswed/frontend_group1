@@ -7,9 +7,10 @@ import {
   Badge,
   BadgeProps,
   MenuItem,
+  useMediaQuery,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HomeIcon from "@mui/icons-material/Home";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import styled from "@emotion/styled";
@@ -41,7 +42,7 @@ export default function NavBar() {
     let mode = event.target.checked;
     dispatch(actions.changeTheme(mode));
   };
-
+  const matches = useMediaQuery("(min-width:640px)");
   return (
     <Box
       sx={{
@@ -53,19 +54,36 @@ export default function NavBar() {
         zIndex: "100",
       }}
     >
-      <AppBar position="static">
+      <AppBar position="static" sx={{ padding: "0 2rem" }}>
         <Toolbar>
-          <Logo style={{ width: "7%" }} />
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Logo
+            style={{
+              width: matches ? "120px" : "70px",
+              display: matches ? "block" : "none",
+            }}
+          />
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "block" },
+            }}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: { xs: "50%", md: "20%" },
+            }}
+          >
             <Link to="/">
-              <IconButton>
-                <HomeIcon sx={{color:"#fff"}}/>
+              <IconButton >
+                <HomeIcon sx={{ color: "#fff" }} />
               </IconButton>
             </Link>
             <Link to="products">
-            <IconButton>
-                <FormatListBulletedIcon sx={{color:"#fff"}}/>
+              <IconButton>
+                <FormatListBulletedIcon sx={{ color: "#fff" }} />
               </IconButton>
             </Link>
             <MenuItem component={Link} to={"/favorite"}>
@@ -78,7 +96,7 @@ export default function NavBar() {
                 <ShoppingCartIcon />
               </StyledBadge>
             </MenuItem>
-            <Switch onChange={handleChange} color = "default"/>
+            <Switch onChange={handleChange} color="default" />
           </Box>
         </Toolbar>
       </AppBar>
