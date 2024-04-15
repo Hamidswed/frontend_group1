@@ -9,6 +9,7 @@
   flex-direction: column;
   text-align: center;
   padding: 60px 100px;
+  overflow-x: hidden;
 }
 
 .home-hero{
