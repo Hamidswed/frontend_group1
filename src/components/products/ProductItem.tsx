@@ -78,7 +78,7 @@ const ProductItem = ({ product }: PropType) => {
   };
 
   return (
-    <Card sx={{ width: 300, maxHeight: "420px" }}>
+    <Card sx={{ width: 300 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

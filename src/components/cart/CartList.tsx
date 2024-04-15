@@ -105,7 +105,7 @@ const CartList = () => {
         </div>
       ) : (
         <>
-        <h3> Cart List</h3>
+          <h3> Cart List</h3>
           <TableContainer component={Paper} style={{ marginTop: "50px" }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
@@ -136,15 +136,17 @@ const CartList = () => {
             </Table>
           </TableContainer>
           <div className="cart-total">
-            <CheckOutBTN variant="outlined" onClick={handleClick}>
+            <CheckOutBTN variant="outlined" onClick={handleClick} size="small">
               Checkout
             </CheckOutBTN>
-            <p>
-              <strong>Total Price</strong>
-            </p>
-            <p>
-              <strong>$ {totalPrice.toFixed(2)}</strong>
-            </p>
+            <div className="price-tag">
+              <span>
+                <strong>Total Price:&nbsp;&nbsp;</strong>
+              </span>
+              <span>
+                <strong>${totalPrice.toFixed(2)}</strong>
+              </span>
+            </div>
           </div>
         </>
       )}

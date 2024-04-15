@@ -28,27 +28,29 @@ const CartItem = ({ cart }: PropType) => {
         }}
       >
         <TableCell component="th" scope="row" align="center">
-          <img src={cart.image} alt={cart.title} />
+          <img src={cart.image} alt={cart.title} style={{maxWidth:"200px"}}/>
         </TableCell>
         <TableCell align="center">{cart.title.slice(0, 20)}</TableCell>
         <TableCell align="center">${cart.price * cart.qty}</TableCell>
         <TableCell align="center">{cart.rating.rate}</TableCell>
         <TableCell align="center">
-          <Button
-            variant="outlined"
-            onClick={() => dispatch(actions.removeFromCart(cart))}
-            size="small"
-          >
-            -
-          </Button>
-          <span style={{ marginInline: "10px" }}>{cart.qty}</span>
-          <Button
-            variant="outlined"
-            onClick={() => dispatch(actions.addToCart(cart))}
-            size="small"
-          >
-            +
-          </Button>
+          <div style={{display:"flex", alignItems:"center"}}>
+            <Button
+              variant="outlined"
+              onClick={() => dispatch(actions.removeFromCart(cart))}
+              size="small"
+            >
+              -
+            </Button>
+            <span style={{ marginInline: "10px" }}>{cart.qty}</span>
+            <Button
+              variant="outlined"
+              onClick={() => dispatch(actions.addToCart(cart))}
+              size="small"
+            >
+              +
+            </Button>
+          </div>
         </TableCell>
         <TableCell align="center">
           <Tooltip title="Remove from cart">

@@ -70,14 +70,14 @@
 .cart-total{
   display: flex;
   margin-top: 10px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: black;
-  width: 50%;
+  width: 500px;
   padding: 15px 20px;
 }
-.cart-total p{
-  color:#ffb703
+.price-tag{
+  color:#ffb703;
 }
 
 .product-item-btn{
@@ -107,9 +107,15 @@
   padding: 5rem 0;
 }
 
+.cart-page{
+  padding: 5rem 1rem 1rem 1rem;
+}
 @media screen and (max-width:480px) {
   .search-filter{
     flex-direction: column;
+  }
+  .cart-total{
+    width: 100%;
   }
 }
 

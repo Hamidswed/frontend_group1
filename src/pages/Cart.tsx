@@ -1,6 +1,10 @@
-import CartList from "../components/cart/CartList"
+import CartList from "../components/cart/CartList";
 
-const Cart=()=>{
-  return <CartList/>
-}
-export default Cart
+const Cart = () => {
+  return (
+    <div className="cart-page">
+      <CartList />
+    </div>
+  );
+};
+export default Cart;
