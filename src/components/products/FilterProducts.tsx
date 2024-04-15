@@ -32,7 +32,7 @@ export default function FilterProducts() {
 
   return (
     <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-      <FormControl sx={{ width: 0.1, }} size="small">
+      <FormControl sx={{ width: "120px", }} size="small">
         <InputLabel id="demo-simple-select-label">Sort</InputLabel>
         <Select
           labelId="demo-simple-select-label"

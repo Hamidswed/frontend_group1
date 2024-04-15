@@ -20,10 +20,22 @@ export default function ProductDetail({ productDetail }: PropType) {
   const dispatch = useDispatch();
   return (
     <Box sx={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
-      <Card sx={{ display: "flex", width: 0.6, minHeight: 400 }}>
+      <Card
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          maxWidth: { xs: "350px", md: "900px" },
+          paddingBottom:{xs:"2rem"}
+        }}
+      >
         <CardMedia
           component="img"
-          sx={{ width: 0.5, maxHeight: "fit-content", margin: "auto 10px" }}
+          sx={{
+            width: "300px",
+            maxHeight: "fit-content",
+            margin: "0 auto",
+            padding: "1rem",
+          }}
           image={productDetail.image}
           alt={productDetail.title}
         />
@@ -31,15 +43,18 @@ export default function ProductDetail({ productDetail }: PropType) {
           sx={{
             display: "flex",
             flexDirection: "column",
-            position: "relative",
+            justifyContent:"center"
           }}
         >
-          <CardContent sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent
+            sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+          >
             <Typography component="div" variant="subtitle1" align="left">
               {productDetail.title}
             </Typography>
             <Typography
               variant="subtitle1"
+              fontSize={30}
               color="#F44336"
               component="div"
               align="left"
@@ -52,7 +67,7 @@ export default function ProductDetail({ productDetail }: PropType) {
               component="div"
               align="left"
             >
-              Description:{productDetail.description}
+              {productDetail.description}
             </Typography>
             <Typography
               variant="subtitle2"
@@ -68,8 +83,6 @@ export default function ProductDetail({ productDetail }: PropType) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              position: "absolute",
-              bottom: 20,
               width: "100%",
               paddingRight: "20px",
             }}

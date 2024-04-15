@@ -9,8 +9,10 @@ const Products = () => {
   return (
     <div className="products-page">
       <h2>Product List</h2>
-       <Search userInput={userInput} setUserInput={setUserInput} /> 
-        <FilterProducts/>
+      <div className="search-filter">
+        <Search userInput={userInput} setUserInput={setUserInput} />
+        <FilterProducts />
+      </div>
       <ProductList userInput={userInput} />
     </div>
   );

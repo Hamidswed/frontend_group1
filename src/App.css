@@ -87,11 +87,30 @@
   gap: 10px;
 }
 .products-page{
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 10rem 0 5rem 0;
+}
+.search-filter{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 .product-list{
   margin-top: 10px;
   min-height: 100vh
+}
+
+.product-detail-page{
+  padding: 5rem 0;
+}
+
+@media screen and (max-width:480px) {
+  .search-filter{
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width:768px) {

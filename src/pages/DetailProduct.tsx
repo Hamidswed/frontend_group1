@@ -19,7 +19,7 @@ const DetailProduct = () => {
 
   
   return (
-    <div>
+    <div className="product-detail-page">
       {productDetail ? (
         <ProductDetail productDetail={productDetail} />
       ) : (
